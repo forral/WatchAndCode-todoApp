@@ -75,7 +75,7 @@ var handlers = {
 	}
 };
 
-// Each li should have an id that has the todo position
+// Delete buttons should have access to the todo id
 
 var view = {
 	displayTodos: function() {
@@ -106,3 +106,29 @@ var view = {
 		return deleteButton;
 	}
 };
+
+
+var todosUl = document.querySelector('ul');
+todosUl.addEventListener('click', function(e) {
+	if (e.target.className === 'deleteButton') {
+		console.log('worked the id of the li is: ' + e.target.parentElement.id);
+	}
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
