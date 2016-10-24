@@ -1,4 +1,4 @@
 # Requirements Version 11
 
-- [ ] todoList.toggleAll should use forEach
+- [x] todoList.toggleAll should use forEach
 - [ ] view.displayTodos should use forEach
