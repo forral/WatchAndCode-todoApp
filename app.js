@@ -59,11 +59,8 @@ var handlers = {
 		changeTodoText.value = '';
 		view.displayTodos();
 	},
-	deleteTodo: function() {
-		var deleteTodoIndexEl = document.getElementById('deleteTodoIndex');
-		var position = deleteTodoIndexEl.value;
+	deleteTodo: function(position) {
 		todoList.deleteTodo(position);
-		deleteTodoIndexEl.value = '';
 		view.displayTodos();
 	},
 	toggleCompleted: function() {
@@ -74,8 +71,6 @@ var handlers = {
 		view.displayTodos();
 	}
 };
-
-// Delete buttons should have access to the todo id
 
 var view = {
 	displayTodos: function() {
@@ -104,31 +99,15 @@ var view = {
 		deleteButton.textContent = 'Delete';
 		deleteButton.className = 'deleteButton';
 		return deleteButton;
+	},
+	setUpEventListeners: function() {
+		var todosUl = document.querySelector('ul');
+		todosUl.addEventListener('click', function(e) {
+			if (e.target.className === 'deleteButton') {
+				handlers.deleteTodo(parseInt(e.target.parentElement.id));
+			}
+		});
 	}
 };
 
-
-var todosUl = document.querySelector('ul');
-todosUl.addEventListener('click', function(e) {
-	if (e.target.className === 'deleteButton') {
-		console.log('worked the id of the li is: ' + e.target.parentElement.id);
-	}
-});
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+view.setUpEventListeners();
