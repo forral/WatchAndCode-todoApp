@@ -75,6 +75,8 @@ var handlers = {
 	}
 };
 
+// Each li should have an id that has the todo position
+
 var view = {
 	displayTodos: function() {
 		var todosUl = document.querySelector('ul');
@@ -91,10 +93,11 @@ var view = {
 				todoTextWithCompletion = '[ ] - ' + todo.todoText + ' ';
 			}
 
+			todoLi.id = i;
 			todoLi.textContent = todoTextWithCompletion;
 			todoLi.appendChild(this.createDeleteButton());
 			todosUl.appendChild(todoLi);
-		} 
+		}
 	},
 	createDeleteButton: function() {
 		var deleteButton = document.createElement('button');
